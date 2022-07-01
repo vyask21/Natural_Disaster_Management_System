@@ -1,36 +1,3 @@
-<?php
-include_once("db_connect.php");
-session_start();
-if(isset($_SESSION['user_id'])) {
-	header("Location: aindex.php");
-}
-$error = false;
-if (isset($_POST['signup'])) {
-	$name = mysqli_real_escape_string($conn, $_POST['name']);
-	$email = mysqli_real_escape_string($conn, $_POST['email']);
-	$password = mysqli_real_escape_string($conn, $_POST['password']);
-		
-	if (!preg_match("/^[a-zA-Z ]+$/",$name)) {
-		$error = true;
-		$uname_error = "Name must contain only alphabets and space";
-	}
-	if(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
-		$error = true;
-		$email_error = "Please Enter Valid Email ID";
-	}
-	if(strlen($password) < 2) {
-		$error = true;
-		$password_error = "Password must be minimum of 3 characters";
-	}
-	if (!$error) {
-		if(mysqli_query($conn, "INSERT INTO admin(user, email, pass) VALUES('" . $name . "', '" . $email . "', '" . md5($password) . "')")) {
-			$success_message = "Successfully Registered! <a href='login.php'>Click here to Login</a>";
-		} else {
-			$error_message = "Error in registering...Please try again later!";
-		}
-	}
-}
-?>
 
 <!DOCTYPE html>
 <html>
@@ -92,19 +59,19 @@ if (isset($_POST['signup'])) {
                     <div>
                         <div class="site-primary-navigation">
                             <ul class="site-primary-links">
-                                <li><a href="isql.php" data-track-click="true" data-track-note="header-navigation">SQL Injection demo</a>
+                                <li><a href="isql.html" data-track-click="true" data-track-note="header-navigation">SQL Injection demo</a>
                                 </li>
-                                <li><a href="about.php" data-track-click="true" data-track-note="header-navigation">About</a>
+                                <li><a href="about.html" data-track-click="true" data-track-note="header-navigation">About</a>
                                 </li>
-                                <li><a href="donate.php" data-track-click="true" data-track-note="header-navigation">Donate</a>
+                                <li><a href="donate.html" data-track-click="true" data-track-note="header-navigation">Donate</a>
                                 </li>
-                                <li><a href="register.php" data-track-click="true" data-track-note="header-navigation">Register</a>
+                                <li><a href="register.html" data-track-click="true" data-track-note="header-navigation">Register</a>
                                 </li>
-                                <li><a href="login.php" data-track-click="true" data-track-note="header-navigation">Login</a>
+                                <li><a href="login.html" data-track-click="true" data-track-note="header-navigation">Login</a>
                                 </li>                                
-                                <li><a href="contact.php" data-track-click="true" data-toggle="dropdown" data-track-note="header-navigation">Contact Us</a>
+                                <li><a href="contact.html" data-track-click="true" data-toggle="dropdown" data-track-note="header-navigation">Contact Us</a>
                                 </li>
-                                <li><a href="alogin.php" data-track-click="true" data-track-note="header-navigation">Admin</a>
+                                <li><a href="alogin.html" data-track-click="true" data-track-note="header-navigation">Admin</a>
                                 </li>
                             </ul>                           
                         </div>
@@ -125,8 +92,8 @@ if (isset($_POST['signup'])) {
                 <h1><strong>Admin</strong>Registration</h1>               
             </div>
         </div>
-        <span class="text-success "><?php if (isset($success_message)) { echo $success_message; }  ?></span>
-		<span class="text-danger "><?php if (isset($error_message)) { echo $error_message; } ?></span>	
+        <span class="text-success "></span>
+		<span class="text-danger "></span>	
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4 form-box">
 				<div class="form-top">
@@ -138,26 +105,26 @@ if (isset($_POST['signup'])) {
                     <!--</div>-->
                 </div>
                 <div class="form-bottom">
-					<form role="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="signupform">	
+					<form role="form"  method="post" name="signupform">	
 						<div class="form-group">								
-							<input type="text" name="name" placeholder="Enter admin Name" required value="<?php if($error) echo $name; ?>" class="form-control" autofocus/>
-							<span class="text-danger"><?php if (isset($uname_error)) echo $uname_error; ?></span>
+							<input type="text" name="name" placeholder="Enter admin Name"  class="form-control" autofocus/>
+							<span class="text-danger"></span>
 						</div>					
 						<div class="form-group">								
-							<br><input type="text" name="email" placeholder="Admin Email" autocomplete="off" required value="<?php if($error) echo $email; ?>" class="form-control" onkeyup="showHint(this.value)"/>
+							<br><input type="text" name="email" placeholder="Admin Email" autocomplete="off" class="form-control" onkeyup="showHint(this.value)"/>
                             <span id="txtHint"></span>
-							<span class="text-danger"><?php if (isset($email_error)) echo $email_error; ?></span>
+							<span class="text-danger"></span>
 						</div>
 						<div class="form-group">								
 							<br><input type="password" name="password" placeholder="Admin Password" required class="form-control" />
-							<span class="text-danger"><?php if (isset($password_error)) echo $password_error; ?></span>
+							<span class="text-danger"></span>
 						</div>						
 						<div class="form-group">
 							<br><button type="submit" name="signup" value="Sign Up" class="btn btn-primary" />Sign up as admin</button>
 						</div>						
 					</form>
 				</div>
-                <p><a href="alogin.php">Login</a> for Admin</p>				
+                <p><a href="alogin.html">Login</a> for Admin</p>				
 			</div>
 		</div>			
 	</div>
@@ -186,7 +153,7 @@ if (isset($_POST['signup'])) {
                     document.getElementById("txtHint").innerHTML = this.responseText ;
                 }
             }
-            xmlhttp.open("GET", "gethint.php?qa=" + str, true);
+            xmlhttp.open("GET", "gethint.html?qa=" + str, true);
             xmlhttp.send();
         }
     }

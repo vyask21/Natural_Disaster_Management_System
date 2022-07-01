@@ -1,8 +1,3 @@
-<?php
-include_once("db_connect.php");
-date_default_timezone_set('Asia/Kolkata');
-session_start();
-?>
 
 <!DOCTYPE html>
 <html>
@@ -48,20 +43,17 @@ session_start();
 <body>
 	<header class="site-header">
         <div class="wrapper site-navigation-bar">
-            <div class="site-logo"><a href="aindex.php">Natural Disaster <br>Management</a></div>
+            <div class="site-logo"><a href="aindex.html">Natural Disaster <br>Management</a></div>
                 <nav class="site-navigation lg-only">
                     <div>
                         <div class="site-primary-navigation">
                             <ul class="site-primary-links">
-                                <li><a href="about.php" data-track-click="true" data-track-note="header-navigation">About</a>
+                                <li><a href="about.html" data-track-click="true" data-track-note="header-navigation">About</a>
                                 </li>
-                                <li><a href="donate.php" data-track-click="true" data-track-note="header-navigation">Donate</a>
+                                <li><a href="donate.html" data-track-click="true" data-track-note="header-navigation">Donate</a>
                                 </li>                                                                                               
-                                <li><a href="contact.php" data-track-click="true" data-toggle="header-navigation" data-track-note="header-navigation">Contact Us</a>
-                                <?php 
-                                if (isset($_SESSION['user_id'])) { ?>
-                                <li><a href="logout.php" data-track-click="true" data-toggle="header-navigation" data-track-note="header-navigation">Logout</a>
-                                <?php } ?>
+                                <li><a href="contact.html" data-track-click="true" data-toggle="header-navigation" data-track-note="header-navigation">Contact Us</a>
+                                
                                 </li>
                             </ul>                            
                         </div>
@@ -79,22 +71,19 @@ session_start();
         </style>        
 	    <div class="collapse navbar-collapse" >
 	        <ul class="nav navbar-nav navbar-left">
-	            <?php
-				if (isset($_SESSION['user_id'])){ ?>
+	            
 			        <li>
-			        	<p class="navbar-text"><strong>Welcome! admin:</strong> <strong><?php	echo $_SESSION['user_name'];?>  </strong></p>
+			        	<p class="navbar-text"><strong>Welcome! admin:</strong> <strong></strong></p>
 			        </li>
-			        <!-- <li><a href="logout.php">
+			        <!-- <li><a href="logout.html">
 			        	<button type="submit" name="logout" value="logout" class="btn btn-primary" />Logout</button>
 			        </a></li> -->
-			        <?php	
-			    } else {?>
-			        <li><a href="alogin.php">
-						    <br><button type="submit" name="signup" value="Sign Up" class="btn btn-primary" />Login</button>
+			        
+			        <li><a href="alogin.html">
+						    <br><button type="submit" name="signup" value="Sign Up" class="btn btn-primary">Login</button>
 						</a></li>
 			        
-			        <?php
-					}?>
+			        
 	       	</ul>
 	    </div>    
 	</div>
@@ -114,22 +103,7 @@ session_start();
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                            include ('db_connect.php');
-                            // $sql = $conn->query('SELECT * FROM contact');
-                            $sql = $conn->query('CALL con()');
-                            while($data = $sql->fetch_array()) {
-                                echo '
-                                    <tr> 
-                                        <td>'.$data['id'].'</td>                                       
-                                        <td>'.$data['name'].'</td>
-                                        <td>'.$data['email'].'</td>
-                                        <td>'.$data['subject'].'</td>
-                                        <td>'.$data['message'].'</td>
-                                        <td>'.$data['time'].'</td>
-                                    </tr>
-                                ';
-                            }
+                        
                         ?>
                     </tbody>
                 </table>
@@ -147,18 +121,7 @@ session_start();
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                            include ('db_connect.php');
-                            $sql = $conn->query('SELECT * FROM users');
-                            while($data = $sql->fetch_array()) {
-                                echo '
-                                    <tr> 
-                                        <td>'.$data['uid'].'</td>                                       
-                                        <td>'.$data['user'].'</td>
-                                        <td>'.$data['email'].'</td>                                        
-                                    </tr>
-                                ';
-                            }
+                        
                         ?>
                     </tbody>
                 </table>
