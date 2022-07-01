@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<team_details>
+  <member>
+    <name>Kajal Singh</name>    
+    <designation>Frontend developer</designation>
+    <description>Tests and adds new features and tailors the user expierience.</description>
+    
+  </member>
+  <member>
+    <name>Vyas Kumar</name>   
+    <designation>Administrator</designation>
+    <description>Incorporate the core development of the service and adds new features.</description>
+
+  </member>
+  <member>
+    <name>Mihir Dixit</name>    
+    <designation>Backend Developer</designation> 
+    <description>Responsible for server side functions and handles analytics and revenue.</description>   
+  </member>  
+</team_details>
