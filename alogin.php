@@ -67,7 +67,7 @@ if (isset($_POST['login'])) {
 <body>
 	<header class="site-header">
         <div class="wrapper site-navigation-bar">
-            <div class="site-logo"><a href="index.php">Natural Disaster <br>Management</a></div>
+            <div class="site-logo"><a href="index.html">Natural Disaster <br>Management</a></div>
                 <nav class="site-navigation lg-only">
                     <div>
                         <div class="site-primary-navigation">

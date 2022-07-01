@@ -24,7 +24,7 @@ echo "Invalid user id or password";
 <body>
 	<div>
 		<br><p><a href="isql.php">Retry injection</a></p>
-		<br><p>Go back to <a href="index.php">Landing</a> page</p>
+		<br><p>Go back to <a href="index.html">Landing</a> page</p>
 	</div>
 </body>
 </html>
